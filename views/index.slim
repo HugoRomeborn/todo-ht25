@@ -1,1 +1,11 @@
+h2 Skapa en ny todo
+form action="/create" method="post"
+    input name="name" placeholder="Titel" type="text"
+    input name="description" placeholder="beskrivning" type="text"
+    input type="submit" value="Spara"
 
+
+-@todos.each  do |todo|
+    h2 #{todo["name"]}
+    p #{todo["description"]}
+    hr
