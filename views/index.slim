@@ -6,6 +6,10 @@ form action="/create" method="post"
 
 
 -@todos.each  do |todo|
-    h2 #{todo["name"]}
+    h2 
+        a href="/#{todo["id"]}/update" #{todo["name"]}
     p #{todo["description"]}
+    form action="/#{todo["id"]}/delete" method="post"
+        input type="submit" value="Delete!"
+
     hr

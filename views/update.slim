@@ -1,3 +1,6 @@
-h2 #{todo["name"]}
+h2 Uppdatera #{@todo["name"]}
 
-
+form action='/#{@todo["id"]}/update' method='post'
+    input name="name" value="#{@todo["name"]}" type="text"
+    input name="description" value="#{@todo["description"]}" type="text"
+    input type="submit" value="Spara"
