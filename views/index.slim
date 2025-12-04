@@ -1,15 +1,42 @@
 h2 Skapa en ny todo
 form action="/create" method="post"
     input name="name" placeholder="Titel" type="text"
+    br
     input name="description" placeholder="beskrivning" type="text"
+    br
+    label for="category" Choose a category
+    select id="category" name="category"
+        option value="1" Köp
+        option value="2" Privat
+        option value="3" Publik
+        option value="4" Städa
+    br
     input type="submit" value="Spara"
 
 
--@todos.each  do |todo|
-    h2 
-        a href="/#{todo["id"]}/update" #{todo["name"]}
-    p #{todo["description"]}
-    form action="/#{todo["id"]}/delete" method="post"
-        input type="submit" value="Delete!"
+section 
+    h1 Att göra!
+    -@todos.each  do |todo|
+        -if todo["done"] == 0
+            h2 
+                a href="/#{todo["id"]}/update" #{todo["name"]}
+            p #{todo["description"]}
+            p Kategori: #{todo["category"]}
+            form action="/#{todo["id"]}/delete" method="post"
+                input type="submit" value="Delete!"
+            form action="/#{todo["id"]}/done" method="post"
+                input type="submit" value="Färdig"
+            hr
+section 
+    h1 Färdiga!
+    -@todos.each  do |todo|
+        -if todo["done"] == 1
+            h2 
+                a href="/#{todo["id"]}/update" #{todo["name"]}
+            p #{todo["description"]}
 
-    hr
+            form action="/#{todo["id"]}/delete" method="post"
+                input type="submit" value="Delete!"
+            form action="/#{todo["id"]}/done" method="post"
+                input type="submit" value="Ofärdig"
+            hr
