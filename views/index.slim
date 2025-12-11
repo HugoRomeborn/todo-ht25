@@ -5,14 +5,18 @@ form action="/create" method="post"
     input name="description" placeholder="beskrivning" type="text"
     br
     label for="category" Choose a category
+    br
     select id="category" name="category"
-        option value="1" Köp
-        option value="2" Privat
-        option value="3" Publik
-        option value="4" Städa
+        -@categories.each do |category|
+            option value="#{category["id"]}" #{category["category"]}
     br
     input type="submit" value="Spara"
 
+h2 Skapa en ny kategori
+form action="/create_category" method="post"
+    input name="category_name" placeholder="Kategori" type="text"
+    br
+    input type="submit" value="Spara" 
 
 section 
     h1 Att göra!
